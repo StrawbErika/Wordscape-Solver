@@ -13,7 +13,7 @@ def save_file(data, name):
     num = 0
     file.write("export default ["+"\n")
     while(num != len(data)):
-        file.write("'"+str(data[num]).lower()+"'"+","+"\n")
+        file.write('"'+str(data[num]).lower()+'"'+','+'\n')
         num = num + 1        
     file.write("]")
     file.close() 

@@ -1,4 +1,4 @@
-import fullDictionary from 'files.js'
+import fullDictionary from './files.js'
 
 "use strict"; //message to compiler
 
@@ -80,5 +80,6 @@ function calculateInterest(letters, format) {
   }
 
 }
-calculateInterest("devil", "___");
+// calculateInterest("devil", "___");
+export default calculateInterest();
 
