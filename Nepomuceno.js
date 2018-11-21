@@ -30,12 +30,13 @@ function calculateInterest(letters, format) {
 
       if (move == lengthOfWord + 1) {									// solution found
         for (i = 0; i < lengthOfWord; i++) {
-          word[i] = letters.slice(option[i + 1][nopts[i + 1]] - 1);
-          word[i] = word[i].toLowerCase()
-          console.log(word[i])
+          // word[i] = letters.slice(option[i + 1][nopts[i + 1]] - 1);
+          // word[i] = word[i].toLowerCase()
+          // console.log(word[i])
+          console.log(letters.slice(option[i + 1][nopts[i + 1]] - 1))
         }
         // console.log(word)
-        word = []
+        // word = []
         // for (i = 0; i < dictSize; i++)
         //   if (!stringComparison(word, dictionary[i]))
         //     printf("%s\n", word);
