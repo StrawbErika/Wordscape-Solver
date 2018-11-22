@@ -4,16 +4,20 @@
 "use strict"; //message to compiler
 
 function calculateInterest(letters, format) {
-  let dictSize = 0, move = 0, start = 0
-  var dictionary = [], nopts = []
-  nopts[start] = 1
-  let lengthOfWord = format.length, noOfChars = letters.length
-  var word = ''
-  var option = []
-  var allWords = []
+  let dictSize = 0;
+  let move = 0;
+  let start = 0;
+  let dictionary = [];
+  let nopts = [];
+  nopts[start] = 1;
+  let lengthOfWord = format.length;
+  let noOfChars = letters.length;
+  let word = '';
+  let option = [];
+  let allWords = [];
 
   for (let i = 0; i < noOfChars * 2; i++) {
-    option[i] = []
+    option[i] = [];
   }
 
   while (nopts[start] > 0) { 												// while dummy stack is not empty
@@ -26,9 +30,9 @@ function calculateInterest(letters, format) {
           word += letters[option[i + 1][nopts[i + 1]] - 1].toLowerCase();
         }
         if (!allWords.includes(word)) {
-          allWords.push(word)
+          allWords.push(word);
         }
-        word = ''
+        word = '';
         // for (i = 0; i < dictSize; i++)
         //   if (!stringComparison(word, dictionary[i]))
         //     printf("%s\n", word);
@@ -53,8 +57,6 @@ function calculateInterest(letters, format) {
       nopts[move]--;													// remove current top on this stack
 
     }
-    console.log(allWords)
-    return allWords
   }
 
   function stringComparison(s1, s2) {
@@ -67,5 +69,7 @@ function calculateInterest(letters, format) {
     }
     return 0;
   }
+  console.log(allWords);
+  return allWords;
 }
 export default calculateInterest;
