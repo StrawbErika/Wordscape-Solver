@@ -1,32 +1,17 @@
+
 // import fullDictionary from './files.js'
 
 "use strict"; //message to compiler
 
 function calculateInterest(letters, format) {
-  // FILE *my = fopen("words.txt","r");
-  // if(my == NULL) {
-  // 	printf("Error words.txt not found!\n");
-  // 	return 0;
-  // }
-  // while(!feof(my)) {
-  // 	fscanf(my, "%s", word);
-  // 	toLowerString(word);
-  // 	if(!stringComparison(word, argv[2]))
-  // 	{
-  // 		dictionary[dictSize] = (char *)(malloc(sizeof(char) * (lengthOfWord+1)));
-  // 		strcpy(dictionary[dictSize++], word);
-  // 	}
-
-  // }
-  // fclose(my);
   let dictSize = 0, move = 0, start = 0
   var dictionary = [], nopts = []
   nopts[start] = 1
   let lengthOfWord = format.length, noOfChars = letters.length
   var word = ''
   var option = []
+  var allWords = []
 
-  // console.log(fullDictionary[0])
   for (let i = 0; i < noOfChars * 2; i++) {
     option[i] = []
   }
@@ -40,7 +25,9 @@ function calculateInterest(letters, format) {
         for (i = 0; i < lengthOfWord; i++) {
           word += letters[option[i + 1][nopts[i + 1]] - 1].toLowerCase();
         }
-        console.log(word)
+        if (!allWords.includes(word)) {
+          allWords.push(word)
+        }
         word = ''
         // for (i = 0; i < dictSize; i++)
         //   if (!stringComparison(word, dictionary[i]))
@@ -66,6 +53,8 @@ function calculateInterest(letters, format) {
       nopts[move]--;													// remove current top on this stack
 
     }
+    console.log(allWords)
+    return allWords
   }
 
   function stringComparison(s1, s2) {
@@ -78,8 +67,5 @@ function calculateInterest(letters, format) {
     }
     return 0;
   }
-
 }
-// calculateInterest("devil", "___");
 export default calculateInterest;
-
