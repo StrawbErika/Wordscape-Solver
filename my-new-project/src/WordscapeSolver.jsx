@@ -89,13 +89,7 @@ export default class WordscapeSolver extends React.Component {
                 }
             }
         }
-        // console.log('this is this.state.finalWords')
-        // console.log(this.state.finalWords)
-        // console.log(this.state.combinedWords)
-        // this.setState({
-        //   combinedWords: this.state.finalWords
-        // })
-        // console.log(this.state.combinedWords)
+
     }
     render() {
         return (
