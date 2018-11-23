@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
 
@@ -57,15 +57,10 @@ app.on('activate', () => {
   }
 });
 
-// ipcMain.on('readDictionary', async () => {
-//   var fs = require('fs');
-//   var dictionary = fs.readFileSync('words.txt').toString().split("\n");
-//   for (i = 0; i < 5; i++) {
-//     console.log(dictionary[i]);
-//   }
-//   mainWindow.webContents.send('dictionary', dictionary)
-// })
-
-
+ipcMain.on('readDictionary', () => {
+  var fs = require('fs');
+  var dictionary = fs.readFileSync(`${__dirname}/words.txt`).toString().split("\n");
+  mainWindow.webContents.send('dictionary', dictionary)
+})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
