@@ -1,10 +1,10 @@
 import { Modal, Button, Input } from 'antd';
 import React from 'react';
 import calculateInterest from './Nepomuceno.js';
-import DisplayWords from './DisplayWords'
+import stringComparison from './StringComp.js'
+import DisplayWords from './DisplayWords';
 
 
-// plan: if nepomuceno.js is a react component: i pass dictionary to nepomuceno.jsx where it compares shit there mmm
 export default class WordscapeSolver extends React.Component {
     constructor() {
         super()
@@ -74,15 +74,15 @@ export default class WordscapeSolver extends React.Component {
         })
     }
 
-    // if nepomuceno.jsx becomes react js no need for this just printWord
     checkWord() {
         this.setState({
             clicked: true
         })
         this.printWord()
+        // error with push for 2nd button press
         for (let j = 0; j < this.state.combinedWords.length; j++) {
             for (let i = 0; i < this.props.dictionary.length; i++) {
-                if (this.state.combinedWords[j] === this.props.dictionary[i]) {
+                if (!stringComparison(this.state.combinedWords[j], this.props.dictionary[i])) {
                     this.setState({
                         finalWords: this.state.finalWords.push(this.state.combinedWords[j])
                     })
@@ -121,7 +121,7 @@ export default class WordscapeSolver extends React.Component {
                             this.state.format === "" && this.state.clicked === true ? 'Format is required' :
                                 //
                                 <div>
-                                    {
+                                    { // if change this to finalWords.map it says it is not a function
                                         this.state.combinedWords.map((words, index) => {
                                             return <DisplayWords key={index} data={words} />
                                         })
