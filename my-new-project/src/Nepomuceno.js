@@ -27,7 +27,7 @@ function calculateInterest(letters, format) {
 
       if (move == lengthOfWord + 1) {									// solution found
         for (i = 0; i < lengthOfWord; i++) {
-          word += letters[option[i + 1][nopts[i + 1]] - 1].toLowerCase();
+          word += letters[option[i + 1][nopts[i + 1]] - 1].toUpperCase();
         }
         if (!allWords.includes(word)) {
           allWords.push(word);
