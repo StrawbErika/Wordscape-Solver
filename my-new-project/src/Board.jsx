@@ -1,6 +1,7 @@
 import React from 'react';
 import Frost2 from './Frost22802'
 import BoardRow from './BoardRow'
+import { Button } from 'antd';
 
 export default class Board extends React.Component {
 
@@ -16,19 +17,24 @@ export default class Board extends React.Component {
     }
 
     render() {
-        // console.log(this.state.dimension)
-        // console.log(this.state.letters)
-        // console.log(this.state.board[0])
         return (
             <div>
+                <div>
+                    {
+                        this.state.board.map((list, index) => {
+                            return <BoardRow key={index} row={list} />
+                        })
+                    }
+                </div>
+                <div id="letters">
+                    {
+                        this.state.letters.map((letter, index) => {
+                            return <Button type="primary" key={index} id="button">{letter}</Button>
+                        })
+                    }
+                </div>
 
-                {
-                    this.state.board.map((list, index) => {
-                        return <BoardRow key={index} row={list} />
-                    })
-                }
             </div>
-
         );
     }
 }

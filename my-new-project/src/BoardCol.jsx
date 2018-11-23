@@ -1,15 +1,12 @@
 import { Col, Input } from 'antd';
 import React from 'react';
-
 export default class BoardCol extends React.Component {
     render() {
         // console.log(this.state.board[0])
         return (
-            <div>
-
+            <div class="colorCol">
                 <Col span={5}>
-                    {/* <Input placeholder={this.props.val} value={this.props.val} /> */}
-                    {this.props.val}
+                    <Input placeholder={this.props.val} id="input" />
                 </Col>
 
             </div>
