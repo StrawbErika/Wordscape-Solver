@@ -11,11 +11,13 @@ export default class WordscapeSolver extends React.Component {
             visible: false,
             letters: "",
             format: "",
+            alphabet: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
             finalWords: [],
             combinedWords: []
         }
         this.handleFormat = this.handleFormat.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
+        this.handleLetterClick = this.handleLetterClick.bind(this);
         this.printWord = this.printWord.bind(this);
         this.checkWord = this.checkWord.bind(this);
         this.showModal = this.showModal.bind(this);
@@ -51,6 +53,11 @@ export default class WordscapeSolver extends React.Component {
     handleLetters(e) {
         this.setState({
             letters: e.target.value.toUpperCase()
+        })
+    }
+    handleLetterClick(e) {
+        this.setState({
+            letters: this.state.letters + e.target.value.toUpperCase()
         })
     }
     handleFormat(e) {
@@ -96,8 +103,15 @@ export default class WordscapeSolver extends React.Component {
                 >
                     <div>
                         <h2>Wordscape solver!</h2>
+                        <div id="letters">
+                            {
+                                this.state.alphabet.map((letter, index) => {
+                                    return <Button onClick={this.handleLetterClick} value={letter} type="primary" key={index} id="button">{letter}</Button>
+                                })
+                            }
+                        </div>
 
-                        <Input placeholder="letters" onChange={this.handleLetters} value={this.state.letters} />
+                        <Input placeholder="letters selected" onChange={this.handleLetters} value={this.state.letters} />
                         <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
                         <Button type="primary" onClick={this.checkWord}> hey </Button>
                         <div>
