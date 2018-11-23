@@ -10,11 +10,13 @@ export default class App extends React.Component {
     this.state = {
       letters: "",
       format: "",
+      finalWords: [],
       combinedWords: []
     }
     this.handleFormat = this.handleFormat.bind(this);
     this.handleLetters = this.handleLetters.bind(this);
     this.printWords = this.printWords.bind(this);
+    this.checkWords = this.checkWords.bind(this);
   }
 
   handleLetters(e) {
@@ -32,14 +34,31 @@ export default class App extends React.Component {
       combinedWords: calculateInterest(this.state.letters, this.state.format)
     })
   }
+  checkWords() {
+    this.printWords()
+    for (let j = 0; j < this.state.combinedWords.length; j++) {
+      for (let i = 0; i < this.props.dictionary.length; i++) {
+        if (this.state.combinedWords[j] === this.props.dictionary[i]) {
+          this.setState({
+            finalWords: this.state.finalWords.push(this.state.combinedWords[j])
+          })
+        }
+      }
+    }
+    console.log(this.state.finalWords)
+    // this.setState({
+    //   combinedWords: this.state.finalWords
+    // })
+    // console.log(this.state.combinedWords)
+  }
   render() {
     return (
       <div>
-        <h2>Gonna cry!</h2>
+        <h2>Wordscape solver!</h2>
 
         <Input placeholder="letters" onChange={this.handleLetters} value={this.state.letters} />
         <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
-        <Button type="primary" onClick={this.printWords}> hey </Button>
+        <Button type="primary" onClick={this.checkWords}> hey </Button>
         <div>
           {
             this.state.combinedWords.map((words, index) => {

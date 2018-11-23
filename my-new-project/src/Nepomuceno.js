@@ -69,7 +69,7 @@ function calculateInterest(letters, format) {
     }
     return 0;
   }
-  console.log(allWords);
+  // console.log(allWords);
   return allWords;
 }
 export default calculateInterest;
