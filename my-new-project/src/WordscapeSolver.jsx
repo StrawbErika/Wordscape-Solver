@@ -3,6 +3,8 @@ import React from 'react';
 import calculateInterest from './Nepomuceno.js';
 import DisplayWords from './DisplayWords'
 
+
+// plan: if nepomuceno.js is a react component: i pass dictionary to nepomuceno.jsx where it compares shit there mmm
 export default class WordscapeSolver extends React.Component {
     constructor() {
         super()
@@ -46,7 +48,8 @@ export default class WordscapeSolver extends React.Component {
             visible: false,
             combinedWords: [],
             letters: "",
-            format: ""
+            format: "",
+            clicked: false
         });
     }
 
@@ -70,7 +73,12 @@ export default class WordscapeSolver extends React.Component {
             combinedWords: calculateInterest(this.state.letters, this.state.format)
         })
     }
+
+    // if nepomuceno.jsx becomes react js no need for this just printWord
     checkWord() {
+        this.setState({
+            clicked: true
+        })
         this.printWord()
         for (let j = 0; j < this.state.combinedWords.length; j++) {
             for (let i = 0; i < this.props.dictionary.length; i++) {
@@ -81,9 +89,9 @@ export default class WordscapeSolver extends React.Component {
                 }
             }
         }
-        console.log('this is this.state.finalWords')
-        console.log(this.state.finalWords)
-        console.log(this.state.combinedWords)
+        // console.log('this is this.state.finalWords')
+        // console.log(this.state.finalWords)
+        // console.log(this.state.combinedWords)
         // this.setState({
         //   combinedWords: this.state.finalWords
         // })
@@ -114,13 +122,19 @@ export default class WordscapeSolver extends React.Component {
                         <Input placeholder="letters selected" onChange={this.handleLetters} value={this.state.letters} />
                         <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
                         <Button type="primary" onClick={this.checkWord}> hey </Button>
-                        <div>
-                            {
-                                this.state.combinedWords.map((words, index) => {
-                                    return <DisplayWords key={index} data={words} />
-                                })
-                            }
-                        </div>
+                        {
+                            // problem area u can just delete
+                            this.state.format === "" && this.state.clicked === true ? 'Format is required' :
+                                //
+                                <div>
+                                    {
+                                        this.state.combinedWords.map((words, index) => {
+                                            return <DisplayWords key={index} data={words} />
+                                        })
+                                    }
+                                </div>
+                        }
+
 
                     </div>
 

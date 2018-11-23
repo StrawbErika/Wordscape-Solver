@@ -5,7 +5,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Wordscape />
+        <Wordscape dictionary={this.props.dictionary} />
       </div>
     );
   }
