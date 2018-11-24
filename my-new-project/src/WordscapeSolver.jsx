@@ -55,17 +55,20 @@ export default class WordscapeSolver extends React.Component {
 
     handleLetters(e) {
         this.setState({
-            letters: e.target.value.toUpperCase()
+            letters: e.target.value.toUpperCase(),
+            finalWords: []
         })
     }
     handleLetterClick(e) {
         this.setState({
-            letters: this.state.letters + e.target.value.toUpperCase()
+            letters: this.state.letters + e.target.value.toUpperCase(),
+            finalWords: []
         })
     }
     handleFormat(e) {
         this.setState({
-            format: e.target.value.toUpperCase()
+            format: e.target.value.toUpperCase(),
+            finalWords: []
         })
     }
 
