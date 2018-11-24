@@ -6,6 +6,7 @@ import DisplayWords from './DisplayWords';
 
 
 export default class WordscapeSolver extends React.Component {
+
     constructor() {
         super()
 
@@ -15,7 +16,7 @@ export default class WordscapeSolver extends React.Component {
             format: "",
             alphabet: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
             finalWords: [],
-            combinedWords: []
+            combinedWords: [],
         }
         this.handleFormat = this.handleFormat.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
@@ -79,10 +80,25 @@ export default class WordscapeSolver extends React.Component {
             clicked: true
         })
         this.printWord()
+        console.log("uhm")
         // error with push for 2nd button press
+        // for (let j = 0; j < this.state.combinedWords.length; j++) {
+        //     for (let i = 0; i < this.props.dictionary.length; i++) {
+        //         // if (!stringComparison(this.state.combinedWords[j], this.props.dictionary[i])) {
+        //         if (this.state.combinedWords[j] === this.props.dictionary[i]) {
+        //             this.setState({
+        //                 finalWords: this.state.finalWords.push(this.state.combinedWords[j])
+        //             })
+        //         }
+        //     }
+        // }
+        console.log("size of combinedWords " + this.state.combinedWords.length)
+        console.log("size of dictionary " + this.props.dictionary.length)
+
         for (let j = 0; j < this.state.combinedWords.length; j++) {
             for (let i = 0; i < this.props.dictionary.length; i++) {
-                if (!stringComparison(this.state.combinedWords[j], this.props.dictionary[i])) {
+
+                if (this.state.combinedWords[j] === this.props.dictionary[i]) {
                     this.setState({
                         finalWords: this.state.finalWords.push(this.state.combinedWords[j])
                     })
@@ -93,6 +109,8 @@ export default class WordscapeSolver extends React.Component {
 
     }
     render() {
+        console.log(this.props.dictionary[0])
+
         return (
             <div>
                 <Button type="primary" onClick={this.showModal}>
@@ -122,6 +140,7 @@ export default class WordscapeSolver extends React.Component {
                             this.state.format === "" && this.state.clicked === true ? 'Format is required' :
                                 //
                                 <div>
+                                    <p> combinedWords </p>
                                     { // if change this to finalWords.map it says it is not a function
                                         this.state.combinedWords.map((words, index) => {
                                             return <DisplayWords key={index} data={words} />

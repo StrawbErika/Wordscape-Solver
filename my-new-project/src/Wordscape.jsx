@@ -6,7 +6,7 @@ export default class Wordscape extends React.Component {
     render() {
         return (
             <div>
-                <WordscapeSolver />
+                <WordscapeSolver dictionary={this.props.dictionary} />
                 <Board />
             </div>
         );

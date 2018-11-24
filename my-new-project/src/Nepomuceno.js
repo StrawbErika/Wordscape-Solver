@@ -55,8 +55,6 @@ function calculateInterest(letters, format) {
 
     }
   }
-
-  // console.log(allWords);
   return allWords;
 }
 export default calculateInterest;
