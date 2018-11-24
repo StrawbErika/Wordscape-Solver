@@ -3,16 +3,67 @@
   width: 40px; 
   margin: 10px;
 }
-.colorCol {
-  background-color: blue;
+
+#titleDiv{
+  margin: auto;
+  width:130px;
+}
+#title{
+  color: white;
+}
+#bulb{
+  height: 45px;
+  width: 45px; 
+  opacity: 0.8;
+}
+#correct {
+  height: 45px;
+  width: 45px; 
+  margin: 5px;
+  background-color: #553ee1;
+  border-color:#553ee1;
+  color: white;
+  font-size: 15px;
+}
+#blank {
+  height: 45px;
+  width: 45px; 
+  margin: 5px;
 }
 #button{
-  height: 40px;
-  width: 40px; 
+  height: 45px;
+  width: 45px; 
   margin: 5px;
+  background-color: white;
+  border-color: white;
+  color: black;
+  opacity: 0.8;
+}
+#solverButton{
+  height: 45px;
+  width: 45px; 
+  margin: 5px;
+  background-color: #553ee1;
+  border-color:#553ee1;
+  color: white;
+  font-size: 15px;
 }
 #letters{
   margin: auto;
+  margin-bottom: 10px;
   padding: 10px;
   width:370px;
+}
+#bodyImg{
+  background: url(bg7.jpg);
+  height: 1409px;
+}
+#board{
+  margin-bottom: 30px;
+  margin: auto;
+}
+
+#goButton{
+  margin-top: 20px;
+  float: left;
 }
