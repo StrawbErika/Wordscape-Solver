@@ -14,7 +14,8 @@ const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
-    height: 800,
+    height: 1000,
+    resizable: false
   });
 
   // and load the index.html of the app.
@@ -60,9 +61,6 @@ app.on('activate', () => {
 ipcMain.on('readDictionary', () => {
   var fs = require('fs');
   var dictionary = fs.readFileSync(`${__dirname}/words.txt`).toString().toUpperCase().split("\n");
-  for (let i = 0; i < 5; i++) {
-    console.log(dictionary[i])
-  }
   mainWindow.webContents.send('dictionary', dictionary)
 })
 // In this file you can include the rest of your app's specific main process

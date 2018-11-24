@@ -1,4 +1,4 @@
-import { Modal, Button, Input } from 'antd';
+import { Modal, Button, Input, Icon } from 'antd';
 import React from 'react';
 import calculateInterest from './Nepomuceno.js';
 import stringComparison from './StringComp.js'
@@ -104,9 +104,7 @@ export default class WordscapeSolver extends React.Component {
 
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>
-                    Open Modal
-                </Button>
+                <Button id="bulb" type="primary" shape="circle" icon="bulb" onClick={this.showModal} />
                 <Modal
                     title="Basic Modal"
                     visible={this.state.visible}
@@ -118,7 +116,7 @@ export default class WordscapeSolver extends React.Component {
                         <div id="letters">
                             {
                                 this.state.alphabet.map((letter, index) => {
-                                    return <Button onClick={this.handleLetterClick} value={letter} type="primary" key={index} id="button">{letter}</Button>
+                                    return <Button onClick={this.handleLetterClick} value={letter} type="primary" key={index} id="solverButton">{letter}</Button>
                                 })
                             }
                         </div>
@@ -132,7 +130,7 @@ export default class WordscapeSolver extends React.Component {
                             this.state.format === "" && this.state.clicked === true ? 'Format is required' :
                                 //
                                 <div>
-                                    { // if change this to finalWords.map it says it is not a function
+                                    {
                                         this.state.finalWords.map((words, index) => {
                                             return <DisplayWords key={index} data={words} />
                                         })

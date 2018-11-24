@@ -15,7 +15,7 @@ export default class BoardRow extends React.Component {
                             if (letters[0] != " ") {
                                 return <BoardCol key={index} letter={letters} />
                             } else {
-                                return <Col id="input" key={index}> {letters} </Col>
+                                return <Col id="blank" key={index}> {letters} </Col>
                             }
                         })
                     }

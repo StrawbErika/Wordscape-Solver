@@ -1,7 +1,8 @@
-import React from 'react';
-import Frost2 from './Frost22802'
-import BoardRow from './BoardRow'
 import { Button, Input } from 'antd';
+import React from 'react';
+import Frost from './Frost32803'
+import BoardRow from './BoardRow'
+import WordscapeSolver from './WordscapeSolver';
 
 export default class Board extends React.Component {
 
@@ -9,10 +10,10 @@ export default class Board extends React.Component {
         super()
 
         this.state = {
-            dimension: Frost2[0],
-            letters: Frost2[1],
-            board: Frost2[2],
-            answers: Frost2[3],
+            dimension: Frost[0],
+            letters: Frost[1],
+            board: Frost[2],
+            answers: Frost[3],
             word: ""
         }
         this.handleLetterClick = this.handleLetterClick.bind(this);
@@ -36,14 +37,6 @@ export default class Board extends React.Component {
         for (let i = 0; i < ans.length; i++) {
             if (this.state.word === ans[i][0]) {
                 for (let j = 0; j < this.state.word.length; j++) {
-                    // console.log(ans[i][0] + " " + this.state.word)
-                    // console.log(
-                    //     "letter: " + newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][0] + ", bool" + 
-                    // )
-                    // console.log(
-                    //     "[" + ans[i][j + 1][0] + ", " + ans[i][j + 1][1] + "]"
-                    // )
-                    // console.log(newBoard[0][2][0])
                     newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][1] = true
                 }
             }
@@ -56,8 +49,14 @@ export default class Board extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="bodyImg">
+                <div id="titleDiv">
+                    <h1 id="title">FROST 3</h1>
+                </div>
                 <div>
+                    <WordscapeSolver dictionary={this.props.dictionary} />
+                </div>
+                <div id="board">
                     {
                         this.state.board.map((list, index) => {
                             return <BoardRow key={index} row={list} />
@@ -73,7 +72,7 @@ export default class Board extends React.Component {
                 </div>
                 <div id="letters">
                     <Input value={this.state.word} onChange={this.handleLetters} />
-                    <Button onClick={this.checkWord}> Go!</Button>
+                    <Button onClick={this.checkWord} id="goButton"> Go!</Button>
                 </div>
                 {/* {console.log(this.state.board)} */}
 
