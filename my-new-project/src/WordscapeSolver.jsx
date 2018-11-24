@@ -49,7 +49,8 @@ export default class WordscapeSolver extends React.Component {
             combinedWords: [],
             letters: "",
             format: "",
-            clicked: false
+            clicked: false,
+            finalWords: []
         });
     }
 
@@ -61,7 +62,7 @@ export default class WordscapeSolver extends React.Component {
     }
     handleLetterClick(e) {
         this.setState({
-            letters: this.state.letters + e.target.value.toUpperCase(),
+            letters: `${this.state.letters}${e.target.value.toUpperCase()}`,
             finalWords: []
         })
     }
@@ -93,12 +94,9 @@ export default class WordscapeSolver extends React.Component {
                 }
             }
         }
-        //that good? :* mwah! still 1 DD:
         this.setState({
             finalWords: allWords
         })
-        // mwaaa :*
-        // :* :*!!! mwa
 
     }
     render() {
@@ -107,7 +105,7 @@ export default class WordscapeSolver extends React.Component {
             <div>
                 <Button type="primary" onClick={this.showModal}>
                     Open Modal
-        </Button>
+                </Button>
                 <Modal
                     title="Basic Modal"
                     visible={this.state.visible}
@@ -127,7 +125,6 @@ export default class WordscapeSolver extends React.Component {
                         <Input placeholder="letters selected" onChange={this.handleLetters} value={this.state.letters} />
                         <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
                         <Button type="primary" onClick={this.checkWord}> hey </Button>
-                        {console.log(this.state.finalWords)}
 
                         {
                             // problem area u can just delete
