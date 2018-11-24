@@ -78,19 +78,20 @@ export default class WordscapeSolver extends React.Component {
         this.setState({
             clicked: true
         })
+        var dict = []
         var words = calculateInterest(this.state.letters, this.state.format)
-
-        console.log("LETTERS: " + this.state.letters)
-        console.log("FORMAT: " + this.state.format)
+        for (let i = 0; i < this.props.dictionary.length; i++) {
+            if (!stringComparison(this.props.dictionary[i], this.state.format)) {
+                dict.push(this.props.dictionary[i])
+            }
+        }
 
         var allWords = []
-        for (let j = 0; j < words.length; j++) {
-            for (let i = 0; i < this.props.dictionary.length; i++) {
-
-                if (!stringComparison(words[j], this.props.dictionary[i])) {
-                    // if (words[j] === this.props.dictionary[i]) {
+        for (let i = 0; i < dict.length; i++) {
+            for (let j = 0; j < words.length; j++) {
+                if (!stringComparison(words[j], dict[i])) {
                     allWords = [...allWords, words[j]]; //oops
-
+                    break;
                 }
             }
         }
