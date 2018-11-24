@@ -76,35 +76,29 @@ export default class WordscapeSolver extends React.Component {
         })
         var words = calculateInterest(this.state.letters, this.state.format)
 
-        // error with push for 2nd button press
-        // for (let j = 0; j < this.state.combinedWords.length; j++) {
-        //     for (let i = 0; i < this.props.dictionary.length; i++) {
-        //         // if (!stringComparison(this.state.combinedWords[j], this.props.dictionary[i])) {
-        //         if (this.state.combinedWords[j] === this.props.dictionary[i]) {
-        //             this.setState({
-        //                 finalWords: this.state.finalWords.push(this.state.combinedWords[j])
-        //             })
-        //         }
-        //     }
-        // }
-        console.log("size of combinedWords " + words.length)
-        console.log("size of dictionary " + this.props.dictionary.length)
+        console.log("LETTERS: " + this.state.letters)
+        console.log("FORMAT: " + this.state.format)
 
+        var allWords = []
         for (let j = 0; j < words.length; j++) {
             for (let i = 0; i < this.props.dictionary.length; i++) {
 
-                if (words[j] === this.props.dictionary[i]) {
-                    this.setState({
-                        finalWords: this.state.finalWords.push(words[j])
-                    })
+                if (!stringComparison(words[j], this.props.dictionary[i])) {
+                    // if (words[j] === this.props.dictionary[i]) {
+                    allWords = [...allWords, words[j]]; //oops
+
                 }
             }
         }
-        console.log(this.state.finalWords)
+        //that good? :* mwah! still 1 DD:
+        this.setState({
+            finalWords: allWords
+        })
+        // mwaaa :*
+        // :* :*!!! mwa
 
     }
     render() {
-        console.log(this.props.dictionary[0])
 
         return (
             <div>
@@ -130,12 +124,13 @@ export default class WordscapeSolver extends React.Component {
                         <Input placeholder="letters selected" onChange={this.handleLetters} value={this.state.letters} />
                         <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
                         <Button type="primary" onClick={this.checkWord}> hey </Button>
+                        {console.log(this.state.finalWords)}
+
                         {
                             // problem area u can just delete
                             this.state.format === "" && this.state.clicked === true ? 'Format is required' :
                                 //
                                 <div>
-                                    <p> combinedWords </p>
                                     { // if change this to finalWords.map it says it is not a function
                                         this.state.finalWords.map((words, index) => {
                                             return <DisplayWords key={index} data={words} />
