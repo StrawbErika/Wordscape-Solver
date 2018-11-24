@@ -3,14 +3,14 @@ export default
         11,
         ['I', 'I', 'E', 'E', 'T', 'D', 'S'],
         [
-            [" ", " ", "S", "E", "E", "D", " ", " ", "S", " ", " "],
-            [" ", " ", "I", " ", " ", "I", " ", "T", "I", "E", "D"],
-            [" ", " ", "T", " ", " ", "E", " ", " ", "D", " ", "E"],
-            ["T", "I", "E", "S", " ", "T", "I", "D", "E", " ", "I"],
-            ["E", " ", " ", "I", " ", " ", " ", " ", " ", " ", "T"],
-            ["E", "D", "I", "T", " ", " ", " ", " ", " ", " ", "I"],
-            ["S", " ", " ", "E", " ", " ", " ", " ", " ", " ", "E"],
-            [" ", " ", " ", "D", " ", " ", " ", " ", " ", " ", "S"],
+            [[" ", false], [" ", false], ["S", false], ["E", false], ["E", false], ["D", false], [" ", false], [" ", false], ["S", false], [" ", false], [" ", false]],
+            [[" ", false], [" ", false], ["I", false], [" ", false], [" ", false], ["I", false], [" ", false], ["T", false], ["I", false], ["E", false], ["D", false]],
+            [[" ", false], [" ", false], ["T", false], [" ", false], [" ", false], ["E", false], [" ", false], [" ", false], ["D", false], [" ", false], ["E", false]],
+            [["T", false], ["I", false], ["E", false], ["S", false], [" ", false], ["T", false], ["I", false], ["D", false], ["E", false], [" ", false], ["I", false]],
+            [["E", false], [" ", false], [" ", false], ["I", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], ["T", false]],
+            [["E", false], ["D", false], ["I", false], ["T", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], ["I", false]],
+            [["S", false], [" ", false], [" ", false], ["E", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], ["E", false]],
+            [[" ", false], [" ", false], [" ", false], ["D", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], [" ", false], ["S", false]],
         ],
         [
             ["SEED", [0, 2], [0, 3], [0, 4], [0, 5]],
@@ -27,3 +27,4 @@ export default
             ["DEITIES", [1, 10], [2, 10], [3, 10], [4, 10], [5, 10], [6, 10], [7, 10]],
         ]
     ];
+

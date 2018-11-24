@@ -12,8 +12,8 @@ export default class BoardRow extends React.Component {
                 <Row type="flex" justify="center">
                     {
                         boardRow.map((letters, index) => {
-                            if (letters != " ") {
-                                return <BoardCol key={index} val={letters} />
+                            if (letters[0] != " ") {
+                                return <BoardCol key={index} letter={letters} />
                             } else {
                                 return <Col id="input" key={index}> {letters} </Col>
                             }

@@ -31,20 +31,28 @@ export default class Board extends React.Component {
     }
     checkWord(e) {
         //figure out how to check answers
-        ans = this.state.answers
+        var newBoard = this.state.board
+        var ans = this.state.answers
         for (let i = 0; i < ans.length; i++) {
-            if (word === ans[i][0]) {
-                ansI = ans[i]
-                for (let j = 0; j < word.length; j++) {
-                    // board[ansI[]]
+            if (this.state.word === ans[i][0]) {
+                for (let j = 0; j < this.state.word.length; j++) {
+                    // console.log(ans[i][0] + " " + this.state.word)
+                    // console.log(
+                    //     "letter: " + newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][0] + ", bool" + 
+                    // )
+                    // console.log(
+                    //     "[" + ans[i][j + 1][0] + ", " + ans[i][j + 1][1] + "]"
+                    // )
+                    // console.log(newBoard[0][2][0])
+                    newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][1] = true
                 }
             }
         }
+        console.log(newBoard)
         this.setState({
-            word: e.target.value.toUpperCase()
+            board: newBoard
         })
     }
-
 
     render() {
         return (
@@ -67,6 +75,7 @@ export default class Board extends React.Component {
                     <Input value={this.state.word} onChange={this.handleLetters} />
                     <Button onClick={this.checkWord}> Go!</Button>
                 </div>
+                {/* {console.log(this.state.board)} */}
 
             </div>
         );
