@@ -21,7 +21,6 @@ export default class WordscapeSolver extends React.Component {
         this.handleFormat = this.handleFormat.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
         this.handleLetterClick = this.handleLetterClick.bind(this);
-        this.printWord = this.printWord.bind(this);
         this.checkWord = this.checkWord.bind(this);
         this.showModal = this.showModal.bind(this);
         this.handleOk = this.handleOk.bind(this);
@@ -69,18 +68,14 @@ export default class WordscapeSolver extends React.Component {
             format: e.target.value.toUpperCase()
         })
     }
-    printWord() {
-        this.setState({
-            combinedWords: calculateInterest(this.state.letters, this.state.format)
-        })
-    }
+
 
     checkWord() {
         this.setState({
             clicked: true
         })
-        this.printWord()
-        console.log("uhm")
+        var words = calculateInterest(this.state.letters, this.state.format)
+
         // error with push for 2nd button press
         // for (let j = 0; j < this.state.combinedWords.length; j++) {
         //     for (let i = 0; i < this.props.dictionary.length; i++) {
@@ -92,15 +87,15 @@ export default class WordscapeSolver extends React.Component {
         //         }
         //     }
         // }
-        console.log("size of combinedWords " + this.state.combinedWords.length)
+        console.log("size of combinedWords " + words.length)
         console.log("size of dictionary " + this.props.dictionary.length)
 
-        for (let j = 0; j < this.state.combinedWords.length; j++) {
+        for (let j = 0; j < words.length; j++) {
             for (let i = 0; i < this.props.dictionary.length; i++) {
 
-                if (this.state.combinedWords[j] === this.props.dictionary[i]) {
+                if (words[j] === this.props.dictionary[i]) {
                     this.setState({
-                        finalWords: this.state.finalWords.push(this.state.combinedWords[j])
+                        finalWords: this.state.finalWords.push(words[j])
                     })
                 }
             }
@@ -142,7 +137,7 @@ export default class WordscapeSolver extends React.Component {
                                 <div>
                                     <p> combinedWords </p>
                                     { // if change this to finalWords.map it says it is not a function
-                                        this.state.combinedWords.map((words, index) => {
+                                        this.state.finalWords.map((words, index) => {
                                             return <DisplayWords key={index} data={words} />
                                         })
                                     }
