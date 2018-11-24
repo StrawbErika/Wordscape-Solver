@@ -1,6 +1,3 @@
-
-// import fullDictionary from './files.js'
-
 "use strict"; //message to compiler
 
 function calculateInterest(letters, format) {
@@ -58,18 +55,6 @@ function calculateInterest(letters, format) {
 
     }
   }
-
-  function stringComparison(s1, s2) {
-    if (s1.length != s2.length) return 1;
-    for (let i = 0; i < s1.length; i++) {
-      if (s1[i] != '_' && s2[i] != '_') {
-        if (s1[i] > s2[i]) return 1;
-        else if (s1[i] < s2[i]) return -1;
-      }
-    }
-    return 0;
-  }
-  // console.log(allWords);
   return allWords;
 }
 export default calculateInterest;
