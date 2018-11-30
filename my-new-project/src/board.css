@@ -1,3 +1,10 @@
+@font-face{
+  font-family: Yikes;
+  src: url(Yikes_medium.ttf);
+}
+body{
+  font-family: Yikes;
+}
 #input {
   height: 40px;
   width: 40px; 
@@ -6,15 +13,20 @@
 
 #titleDiv{
   margin: auto;
-  width:130px;
+  padding-top: 30px;
+  width:170px;
+  text-align: center;
 }
 #title{
+  font-size: 40px;
+  font-weight: bold;
   color: white;
 }
 #bulb{
   height: 45px;
   width: 45px; 
   opacity: 0.8;
+  margin-left: 700px;
 }
 #correct {
   height: 45px;
@@ -43,27 +55,42 @@
   height: 45px;
   width: 45px; 
   margin: 5px;
-  background-color: #553ee1;
-  border-color:#553ee1;
+  background-color: #59595b;
+  border-color:#59595b;
   color: white;
   font-size: 15px;
+  font-family: Yikes;
 }
 #letters{
   margin: auto;
   margin-bottom: 10px;
   padding: 10px;
   width:370px;
+  text-align: center;
 }
 #bodyImg{
   background: url(bg7.jpg);
-  height: 1409px;
+  height: 1100px;
 }
 #board{
-  margin-bottom: 30px;
-  margin: auto;
+  margin-bottom: 100px;
 }
 
 #goButton{
   margin-top: 20px;
   float: left;
+}
+
+#tab{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#tagDiv{
+  margin-top: 20px;
+  text-align: center;
+  font-family: Yikes;
+}
+#modalDiv{
+  text-align: center;
 }

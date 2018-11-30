@@ -1,18 +1,20 @@
-import { Modal, Button, Input, Icon } from 'antd';
+import { Modal, Button, Input, Icon, Alert, Tag } from 'antd';
 import React from 'react';
 import calculateInterest from './Nepomuceno.js';
+import Frost from './Frost32803'
 import stringComparison from './StringComp.js'
 import DisplayWords from './DisplayWords';
 
 
 export default class WordscapeSolver extends React.Component {
+    //const Search = Input.Search;
 
     constructor() {
         super()
 
         this.state = {
             visible: false,
-            letters: "",
+            letters: Frost[1],
             format: "",
             alphabet: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
             finalWords: [],
@@ -47,7 +49,7 @@ export default class WordscapeSolver extends React.Component {
         this.setState({
             visible: false,
             combinedWords: [],
-            letters: "",
+            letters: Frost[1],
             format: "",
             clicked: false,
             finalWords: []
@@ -106,33 +108,43 @@ export default class WordscapeSolver extends React.Component {
             <div>
                 <Button id="bulb" type="primary" shape="circle" icon="bulb" onClick={this.showModal} />
                 <Modal
-                    title="Basic Modal"
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
+                    destroyOnClose={true}                                                                                
+                    footer={null}
                 >
                     <div>
-                        <h2>Wordscape solver!</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                         <div id="letters">
                             {
-                                this.state.alphabet.map((letter, index) => {
-                                    return <Button onClick={this.handleLetterClick} value={letter} type="primary" key={index} id="solverButton">{letter}</Button>
+                                this.state.letters.map((letter, index) => {
+                                    return <Button value={letter} type="primary" key={index} id="solverButton">{letter}</Button>
                                 })
                             }
                         </div>
 
-                        <Input placeholder="letters selected" onChange={this.handleLetters} value={this.state.letters} />
-                        <Input placeholder="format" onChange={this.handleFormat} value={this.state.format} />
-                        <Button type="primary" onClick={this.checkWord}> hey </Button>
+                        <Input.Search
+                            placeholder="input format here"
+                            enterButton="Find"
+                            onChange={this.handleFormat} value={this.state.format}
+                            size="large"
+                            onSearch={this.checkWord}
+                        />
+                        
 
                         {
                             // problem area u can just delete
-                            this.state.format === "" && this.state.clicked === true ? 'Format is required' :
-                                //
-                                <div>
+                            this.state.format === "" && this.state.clicked === true ? 
+                                <div id="tagDiv">
+                                    {
+                                        <Alert message="Format is required." type="error" closable />
+                                    }
+                                </div> :
+                                <div id="tagDiv">
                                     {
                                         this.state.finalWords.map((words, index) => {
-                                            return <DisplayWords key={index} data={words} />
+                                            return <Tag id="tab" value={words} key={index}>{words}</Tag>
                                         })
                                     }
                                 </div>
