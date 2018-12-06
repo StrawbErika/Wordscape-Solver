@@ -1,4 +1,4 @@
-import { Button, Input } from 'antd';
+import { Button, Input, Alert, Modal } from 'antd';
 import React from 'react';
 import Frost from './Frost32803'
 import BoardRow from './BoardRow'
@@ -10,6 +10,7 @@ export default class Board extends React.Component {
         super()
 
         this.state = {
+            visible: false,
             dimension: Frost[0],
             letters: Frost[1],
             board: Frost[2],
@@ -19,6 +20,13 @@ export default class Board extends React.Component {
         this.handleLetterClick = this.handleLetterClick.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
         this.checkWord = this.checkWord.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
+    }
+    handleCancel(e) {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
     }
     handleLetterClick(e) {
         this.setState({
@@ -34,6 +42,7 @@ export default class Board extends React.Component {
         //figure out how to check answers
         var newBoard = this.state.board
         var ans = this.state.answers
+        
         for (let i = 0; i < ans.length; i++) {
             if (this.state.word === ans[i][0]) {
                 for (let j = 0; j < this.state.word.length; j++) {
@@ -45,11 +54,29 @@ export default class Board extends React.Component {
         this.setState({
             board: newBoard
         })
+        this.state.word = "";
+
+        if(this.state.board === this.state.answers){
+            console.log("Congratulations!");
+            this.setState({
+                visible: true,
+            });
+        }
     }
 
     render() {
         return (
             <div id="bodyImg">
+                <Modal
+                    visible={this.state.visible}
+                    onCancel={this.handleCancel}
+                    footer={null}
+                >
+                    <div id="modalDiv">
+                        <img src="trophy.png" width="50px" />
+                        <h3>Congratulations!<br></br>You have compeleted the crossword.</h3>
+                    </div>
+                </Modal>
                 <div id="titleDiv">
                     <h1 id="title">FROST 3</h1>
                 </div>
@@ -71,11 +98,16 @@ export default class Board extends React.Component {
                     }
                 </div>
                 <div id="letters">
-                    <Input value={this.state.word} onChange={this.handleLetters} />
-                    <Button onClick={this.checkWord} id="goButton"> Go!</Button>
+                    <Input.Search
+                        enterButton="Go!"
+                        value={this.state.word}
+                        onChange={this.handleLetters}
+                        size="large"
+                        onSearch={this.checkWord}
+                        onPressEnter={this.checkWord}
+                        autoFocus
+                    />
                 </div>
-                {/* {console.log(this.state.board)} */}
-
             </div>
         );
     }

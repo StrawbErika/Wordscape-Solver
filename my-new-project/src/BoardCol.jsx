@@ -7,11 +7,11 @@ export default class BoardCol extends React.Component {
             <div class="colorCol">
                 {
                     this.props.letter[1] === false ?
-                        <Col span={5}>
+                        <Col span={3}>
                             <Button id="blank"></Button>
                         </Col>
                         :
-                        <Col span={5}>
+                        <Col span={3}>
                             <Button id="correct"> {this.props.letter[0]}</Button>
                         </Col>
 
