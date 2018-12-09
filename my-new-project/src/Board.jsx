@@ -15,7 +15,7 @@ export default class Board extends React.Component {
             letters: Frost[1],
             board: Frost[2],
             answers: Frost[3],
-            word: ""
+            word: "",
         }
         this.handleLetterClick = this.handleLetterClick.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
@@ -42,22 +42,37 @@ export default class Board extends React.Component {
         //figure out how to check answers
         var newBoard = this.state.board
         var ans = this.state.answers
-        
+
         for (let i = 0; i < ans.length; i++) {
             if (this.state.word === ans[i][0]) {
+                const rightSFX = document.getElementById("right");
+                rightSFX.currentTime = 0
+                rightSFX.play()
                 for (let j = 0; j < this.state.word.length; j++) {
                     newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][1] = true
                 }
+                break;
             }
         }
-        console.log(newBoard)
         this.setState({
             board: newBoard
         })
         this.state.word = "";
 
-        if(this.state.board === this.state.answers){
-            console.log("Congratulations!");
+        var checker = true
+        for (let i = 0; i < this.state.board.length; i++) {
+            for (let j = 0; j < this.state.board[i].length; j++) {
+                if (this.state.board[i][j][1] === false) {
+                    checker = false
+                    break;
+                }
+            }
+            if (checker === false) {
+                break;
+            }
+        }
+        if (checker === true) {
+            document.getElementById("tada").play()
             this.setState({
                 visible: true,
             });
@@ -90,6 +105,9 @@ export default class Board extends React.Component {
                         })
                     }
                 </div>
+                <audio id="right" src="Correct.mp3" />
+                <audio id="tada" src="TaDa.mp3" />
+
                 <div id="letters">
                     {
                         this.state.letters.map((letter, index) => {

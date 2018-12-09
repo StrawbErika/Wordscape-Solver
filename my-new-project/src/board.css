@@ -23,10 +23,12 @@ body{
   color: white;
 }
 #bulb{
-  height: 45px;
-  width: 45px; 
+  height: 60px;
+  width: 60px; 
+  font-size: 25px;
   opacity: 0.8;
-  margin-left: 700px;
+  margin-left: 725px;
+  position: absolute;
 }
 #correct {
   height: 45px;
@@ -70,7 +72,7 @@ body{
 }
 #bodyImg{
   background: url(bg7.jpg);
-  height: 1100px;
+  height: 1000px;
 }
 #board{
   margin-bottom: 100px;

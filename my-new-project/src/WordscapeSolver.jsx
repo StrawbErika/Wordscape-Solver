@@ -111,11 +111,11 @@ export default class WordscapeSolver extends React.Component {
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
-                    destroyOnClose={true}                                                                                
+                    destroyOnClose={true}
                     footer={null}
                 >
                     <div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
                         <div id="letters">
                             {
                                 this.state.letters.map((letter, index) => {
@@ -131,11 +131,11 @@ export default class WordscapeSolver extends React.Component {
                             size="large"
                             onSearch={this.checkWord}
                         />
-                        
+
 
                         {
                             // problem area u can just delete
-                            this.state.format === "" && this.state.clicked === true ? 
+                            this.state.format === "" && this.state.clicked === true ?
                                 <div id="tagDiv">
                                     {
                                         <Alert message="Format is required." type="error" closable />
