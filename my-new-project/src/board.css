@@ -29,6 +29,10 @@ body{
   opacity: 0.8;
   margin-left: 725px;
   position: absolute;
+  opacity: 0.6;
+  background-color: white;
+  border-color: white;
+  color: black;
 }
 #correct {
   height: 45px;
