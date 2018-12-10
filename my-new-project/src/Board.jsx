@@ -16,6 +16,7 @@ export default class Board extends React.Component {
             board: Frost[2],
             answers: Frost[3],
             word: "",
+            cAns: 0
         }
         this.handleLetterClick = this.handleLetterClick.bind(this);
         this.handleLetters = this.handleLetters.bind(this);
@@ -45,19 +46,23 @@ export default class Board extends React.Component {
 
         for (let i = 0; i < ans.length; i++) {
             if (this.state.word === ans[i][0]) {
-                const rightSFX = document.getElementById("right");
-                rightSFX.currentTime = 0
-                rightSFX.play()
+                if (this.state.cAns < this.state.answers.length - 1) {
+                    const rightSFX = document.getElementById("right");
+                    rightSFX.currentTime = 0
+                    rightSFX.play()
+                }
                 for (let j = 0; j < this.state.word.length; j++) {
                     newBoard[ans[i][j + 1][0]][ans[i][j + 1][1]][1] = true
                 }
                 break;
             }
         }
+
         this.setState({
-            board: newBoard
+            board: newBoard,
+            cAns: this.state.cAns + 1,
+            word: ""
         })
-        this.state.word = "";
 
         var checker = true
         for (let i = 0; i < this.state.board.length; i++) {
