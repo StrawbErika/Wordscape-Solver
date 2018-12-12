@@ -14,7 +14,7 @@ export default class WordscapeSolver extends React.Component {
 
         this.state = {
             visible: false,
-            letters: Frost[1],
+            letters: [],
             format: "",
             alphabet: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
             finalWords: [],
@@ -83,7 +83,7 @@ export default class WordscapeSolver extends React.Component {
         var dict = []
         var words = calculateInterest(this.state.letters, this.state.format)
         for (let i = 0; i < this.props.dictionary.length; i++) {
-            if (!stringComparison(this.props.dictionary[i], this.state.format)) {
+            if ((this.props.dictionary[i].length === this.state.format.length) && (!stringComparison(this.props.dictionary[i], this.state.format))) {
                 dict.push(this.props.dictionary[i])
             }
         }
@@ -118,20 +118,28 @@ export default class WordscapeSolver extends React.Component {
 
                         <div id="letters">
                             {
-                                this.state.letters.map((letter, index) => {
-                                    return <Button value={letter} type="primary" key={index} id="solverButton">{letter}</Button>
+                                this.state.alphabet.map((letter, index) => {
+                                    return <Button onClick={this.handleLetterClick} value={letter} type="primary" key={index} id="solverButton">{letter}</Button>
                                 })
                             }
                         </div>
 
-                        <Input.Search
-                            placeholder="input format here"
-                            enterButton="Find"
-                            onChange={this.handleFormat} value={this.state.format}
-                            size="large"
-                            onSearch={this.checkWord}
-                        />
+                        <div id="letters">
+                            <Input placeholder="Input letters"
+                                onChange={this.handleLetters} value={this.state.letters}
+                                size="large"
+                            />
+                        </div>
+                        <div id="letters">
 
+                            <Input.Search
+                                placeholder="input format here"
+                                enterButton="Find"
+                                onChange={this.handleFormat} value={this.state.format}
+                                size="large"
+                                onSearch={this.checkWord}
+                            />
+                        </div>
 
                         {
                             // problem area u can just delete

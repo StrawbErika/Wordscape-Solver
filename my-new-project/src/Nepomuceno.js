@@ -18,6 +18,7 @@ function calculateInterest(letters, format) {
   }
 
   while (nopts[start] > 0) { 												// while dummy stack is not empty
+
     if (nopts[move] > 0) {
       move++;
       nopts[move] = 0; 													// initialize position - no initial candidates
@@ -26,13 +27,11 @@ function calculateInterest(letters, format) {
         for (i = 0; i < lengthOfWord; i++) {
           word += letters[option[i + 1][nopts[i + 1]] - 1].toUpperCase();
         }
+        console.log("computing ...")
         if (!allWords.includes(word)) {
           allWords.push(word);
         }
         word = '';
-        // for (i = 0; i < dictSize; i++)
-        //   if (!stringComparison(word, dictionary[i]))
-        //     printf("%s\n", word);
       }
       else if (move == 1) {											// only case where we'll populate the first position
         for (let candidate = noOfChars; candidate >= 1; candidate--) {
